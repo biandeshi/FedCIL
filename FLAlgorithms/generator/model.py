@@ -191,7 +191,7 @@ class WGAN(nn.Module):
         # train with real data:
         dis_output, aux_output, logits_real, feature = self.critic(x, if_features=True)
         dis_errD_real = self.dis_criterion(dis_output, dis_label)
-        aux_errD_real = self.aux_criterion(torch.log(aux_output), y)
+        aux_errD_real = self.aux_criterion(torch.log(aux_output), y.long())
         loss_c_real = dis_errD_real + aux_errD_real 
         
         # train with generated data:
